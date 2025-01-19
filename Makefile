@@ -4,19 +4,19 @@ install:
 
 .PHONY: migrate
 migrate:
-	poetry run python -m slot-booking-backend.manage migrate
+	poetry run python -m slot_booking_backend.manage migrate
 
 .PHONY: migrations
 migration:
-	poetry run python -m slot-booking-backend.manage makemigrations
+	poetry run python -m slot_booking_backend.manage makemigrations
 
 .PHONY: superuser
 superuser:
-	poetry run python -m slot-booking-backend.manage createsuperuser
+	poetry run python -m slot_booking_backend.manage createsuperuser
 
 .PHONY: run-server
 run-server:
-	poetry run python -m  slot-booking-backend.manage runserver
+	poetry run python -m  slot_booking_backend.manage runserver
 
 .PHONY: update
 update: install migrate ;
