@@ -1,0 +1,55 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual Environments
+venv/
+.env/
+.envrc/
+
+# Poetry
+.poetry/
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+*.db
+
+# Docker
+*.dockerfile
+docker-compose.override.yml
+.docker/
+Dockerfile*
+docker-compose.yml
+
+# Makefile
+Makefile.bak
+
+# Static and Media files
+static/
+media/
+
+# Test and coverage reports
+.coverage
+nosetests.xml
+*.cover
+*.tox
+*.nox
+*.coverage
+*.hypothesis
+*.pytest_cache
+*.coverage.*
+
+# IDE and editor files
+.idea/
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
