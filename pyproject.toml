@@ -41,3 +41,4 @@ dedent_closing_brackets = true
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.0.1"
+colorlog = "^6.9.0"
