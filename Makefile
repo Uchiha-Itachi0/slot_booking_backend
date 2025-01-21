@@ -26,5 +26,17 @@ superuser:
 run-server:
 	poetry run python -m  slot_booking_backend.manage runserver
 
+.PHONY: up-dependencies-only
+up-dependencies-only:
+	test -f .env || touch .env
+	docker-compose down
+	docker-compose -f docker-compose.dev.yml up --build --force-recreate db app
+
+.PHONY: up-dependencies-db-only
+up-dependencies-db-only:
+	test -f .env || touch .env
+	docker-compose down
+	docker-compose -f docker-compose.dev.yml up --force-recreate db
+
 .PHONY: update
 update: install migrate install-pre-commit ;
