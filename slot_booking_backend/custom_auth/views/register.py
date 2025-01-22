@@ -1,9 +1,10 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 
-from ..utils.response import create_response
-from .serializers.jwt import generate_token_for_user
-from .serializers.register import RegisterSerializer
+from slot_booking_backend.utils.response import create_response
+
+from ..serializers.jwt import generate_token_for_user
+from ..serializers.register import RegisterSerializer
 
 
 @api_view(['POST'])
