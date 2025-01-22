@@ -15,7 +15,7 @@ migrate:
 	poetry run python -m slot_booking_backend.manage migrate
 
 .PHONY: migrations
-migration:
+migrations:
 	poetry run python -m slot_booking_backend.manage makemigrations
 
 .PHONY: superuser
@@ -25,6 +25,14 @@ superuser:
 .PHONY: run-server
 run-server:
 	poetry run python -m  slot_booking_backend.manage runserver
+
+.PHONY: run-server-with-migrations
+run-server-with-migrations:
+	poetry run python -m slot_booking_backend.manage migrate
+	poetry run python -m slot_booking_backend.manage makemigrations
+	poetry run python -m  slot_booking_backend.manage runserver
+
+
 
 .PHONY: up-dependencies-only
 up-dependencies-only:
