@@ -1,0 +1,2 @@
+OTP_LENGTH = 6
+OTP_EXPIRY_TIME = 300  # 5min

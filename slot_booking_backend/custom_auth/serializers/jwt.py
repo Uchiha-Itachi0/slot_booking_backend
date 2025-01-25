@@ -24,5 +24,9 @@ def generate_token_for_user(user) -> Dict[str, str]:
     Returns:
         Dict[str, str]: A dictionary containing the refresh and access tokens.
     """
-    refresh_token = RefreshToken.for_user(user)  # Generates a refresh token for the user
-    return {'refresh_token': str(refresh_token), 'access_token': str(refresh_token.access_token)}
+    refresh_token = RefreshToken.for_user(user)
+    access_token = refresh_token.access_token
+
+    # Add user_type to the token's payload
+    access_token['user_type'] = user.user_type
+    return {'refresh_token': str(refresh_token), 'access_token': str(access_token)}

@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 
 
-def create_response(success: bool, message: str, data=None, errors=None, status_code=status.HTTP_200_OK):
+def create_response(success: bool, message: str, data=None, errors=None, status_code=status.HTTP_200_OK, **kwargs):
     """
     Generate a consistent JSON response.
 
@@ -16,10 +16,8 @@ def create_response(success: bool, message: str, data=None, errors=None, status_
     Returns:
         Response: DRF Response object.
     """
-    return Response({
-        'success': success,
-        'message': message,
-        'data': data or {},
-        'errors': errors or {}
-    },
-                    status=status_code)  # noqa:  E126
+    response_data = {'success': success, 'message': message, 'data': data or {}, 'errors': errors or {}}
+
+    response_data.update(kwargs)
+
+    return Response(response_data, status=status_code)
