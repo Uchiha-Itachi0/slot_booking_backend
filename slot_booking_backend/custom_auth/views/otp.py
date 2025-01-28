@@ -43,21 +43,27 @@ def verify_otp(request):
         if user:
             # User found, generate tokens
             tokens = generate_token_for_user(user)
+
+            data = {
+                'tokens': tokens,
+                'new_user': False,
+            }
             return create_response(
                 success=True,
                 message='Successfully logged in',
-                data=tokens,
+                data=data,
                 status_code=status.HTTP_200_OK,
                 new_user=False,
                 user_type=user.user_type
             )
         else:
             # User not found, respond with 'new_user' flag
+            data = {'new_user': True}
             return create_response(
                 success=True,
                 message='User does not exist. Redirect to registration',
-                status_code=status.HTTP_404_NOT_FOUND,
-                new_user=True
+                status_code=status.HTTP_200_OK,
+                data=data
             )
 
     return create_response(
